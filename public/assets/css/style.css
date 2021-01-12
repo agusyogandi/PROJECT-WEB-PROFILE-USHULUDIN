@@ -1,0 +1,244 @@
+/* header */
+.boxHeader {
+  position: relative;
+  width: 100%;
+  height: 200px;
+
+  background: linear-gradient(180deg, #082d48 0%, #083657 100%), #082d48;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.boxHeader2 {
+  background-color: #082d48;
+  width: 100%;
+  height: 50px;
+}
+#txtBanner {
+  color: white;
+}
+.txtBanner2 {
+  color: white;
+  margin-top: -10px;
+  font-size: 17px;
+}
+#textNavBar {
+  color: white;
+  font-size: 10px;
+  margin-top: 5px;
+}
+#textNavBar2 {
+  color: white;
+  font-size: 13px;
+  margin-top: 5px;
+}
+.imgSrc {
+  width: 18px;
+  height: 18px;
+  margin-top: 10px;
+  margin-left: 15px;
+}
+#imgSrc2 {
+  width: 20px;
+  height: 20px;
+  margin-top: 15px;
+  margin-right: 10px;
+}
+.imgNews {
+  width: 18px;
+  height: 18px;
+}
+
+/* konten Beranda */
+
+.boxMain {
+  background-color: rgb(247, 247, 247);
+  width: 100%;
+  height: 680px;
+}
+#imgMain {
+  width: 100%;
+  height: 400px;
+  margin-top: 10px;
+}
+.DeskMain {
+  text-align: justify;
+  position: relative;
+  margin-top: -150px;
+  margin-left: 50px;
+  margin-bottom: 120px;
+}
+#imgMainLs {
+  width: 197px;
+  height: 150px;
+  margin-top: 10px;
+}
+#imgMainWin {
+  width: 100%;
+  height: 150px;
+  margin-top: 10px;
+}
+#imgSub {
+  width: 100%;
+  height: 130px;
+  margin-top: 10px;
+}
+.deskImgSub {
+  color: black;
+  font-size: 10px;
+  text-align: left;
+}
+.deskImgWin {
+  color: black;
+  font-size: 20px;
+  text-align: left;
+}
+.petik {
+  text-align: center;
+  font-style: italic;
+  font-size: 50px;
+}
+.quotes {
+  text-align: center;
+  margin-top: -20px;
+  font-style: italic;
+}
+#imgGal {
+  width: 100%;
+  height: 170px;
+  margin-top: 10px;
+}
+.headArtikel {
+  margin-top: 10px;
+  font-style: bold;
+  font-size: 15px;
+  text-align: left;
+}
+.artikel {
+  font-size: 15px;
+  text-align: left;
+}
+.headBeritaTerbaru {
+  font-size: 20px;
+  margin-top: 20px;
+}
+#imgBeritaTerbaru {
+  width: 100%;
+  height: 350px;
+}
+#imgSubBeritaTerbaru {
+  width: 100%;
+  height: 180px;
+}
+.tglSubBeritaTerbaru {
+  font-size: 15px;
+}
+.judulSubBeritaTerbaru {
+  font-size: 20px;
+  margin-top: -20px;
+}
+.deskSubBeritaTerbaru {
+  font-size: 17px;
+}
+.boxActivity {
+  width: 100%;
+  height: 145px;
+  background-color: rgb(227, 227, 227);
+  padding-left: 10px;
+  border-radius: 2px;
+}
+.txtHeadSt {
+  font-size: 20px;
+  color: rgb(0, 0, 0);
+}
+#txtIsisSt {
+  font-size: 13px;
+  color: rgb(0, 0, 0);
+  margin-top: -10px;
+}
+#imgSlideIcon {
+  width: 50px;
+  height: 50px;
+  margin-top: 30px;
+}
+
+/* konten profile */
+.imgBannerProfile {
+  width: 100%;
+  height: 300px;
+  border: 1px solid rgb(176, 176, 176);
+}
+.deskProfile {
+  text-align: justify;
+}
+
+/* konten News */
+.boxBeritaTerkait {
+  width: 100%;
+  height: 40px;
+  background-color: #082d48;
+}
+.txtBeritaTerkait {
+  color: white;
+  font-size: 20px;
+  padding-left: 5px;
+  padding-top: 3px;
+}
+.imgIconDisqus {
+  width: 15px;
+  height: 15px;
+}
+.txtIconDisqus {
+  color: #373737;
+  font-size: 15px;
+}
+
+/* event */
+.boxEventTerkait {
+  width: 100%;
+  height: auto;
+  background-color: #e1e1e1;
+  padding: 10px;
+}
+.boxKeteranganEvent {
+  width: 100%;
+  height: auto;
+  background-color: #e1e1e1;
+  padding: 10px;
+}
+
+/*karya ilmiah */
+#imgKarya {
+  width: 150px;
+  height: 200px;
+}
+
+/* footer */
+.footer {
+  width: 100%;
+  height: 250px;
+}
+.footerfk {
+  font-size: 20px;
+  color: white;
+}
+.footerushu {
+  font-size: 25px;
+  color: white;
+}
+.footerisi {
+  font-size: 11px;
+  color: white;
+}
+#qLink {
+  font-size: 11px;
+  color: white;
+  margin-bottom: 3px;
+}
+.contact {
+  font-size: 11px;
+  color: white;
+  margin-top: 5px;
+}
+.imgct {
+  width: 18px;
+  height: 18px;
+}
