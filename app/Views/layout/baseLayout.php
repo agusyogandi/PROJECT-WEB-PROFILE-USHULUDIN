@@ -42,6 +42,7 @@
 <head>
     <link rel="icon" type="image/png" href="/assets/images/uin.png">
     <title><?= $this->renderSection('title') ?></title>
+    <!-- bootstrap 4 -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -49,14 +50,31 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <!-- local css -->
     <link rel="stylesheet" href="<?= base_url('assets/css/style.css'); ?>" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.bundle.js"></script>
+    <!-- data tables -->
+    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+    <script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" /> -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
+    <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
+    <!-- slider foto -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <link rel="stylesheet" href="<?= base_url('assets/css/flexslider.css'); ?>">
+    <script src="<?= base_url('assets/js/jquery.flexslider.js'); ?>"></script>
+    <!-- slider artikel di home -->
+
+    <!-- other -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.bundle.js"></script>
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
     <link rel="stylesheet" href="<?= base_url('assets/css/bootstrap.css'); ?>" />
     <link rel="stylesheet" href="<?= base_url('assets/css/dataTables.bootstrap4.min.css'); ?>" />
-
-
-
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <link rel="stylesheet" href="<?= base_url('assets/css/flexslider.css'); ?>">
+    <script src="<?= base_url('assets/js/jquery.flexslider.js'); ?>"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.bundle.js"></script> -->
 
 </head>
 
@@ -127,10 +145,15 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="/profil" id="textNavBar2">PROFIL</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/news" id="textNavBar2">NEWS</a>
-                            </li>
                             <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="textNavBar2" data-toggle="dropdown">
+                                    NEWS
+                                </a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="/news">BERITA TERBARU</a>
+                                </div>
+                            </li>
+                            <li class=" nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="textNavBar2" data-toggle="dropdown">
                                     KARYA ILMIAH
                                 </a>
@@ -142,8 +165,17 @@
                                     <a class="dropdown-item" href="/karyaIlmiah/opini">OPINI</a>
                                 </div>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/infoAkademik" id="textNavBar2">INFO AKADEMIK</a>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="textNavBar2" data-toggle="dropdown">
+                                    INFO AKADEMIK
+                                </a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="/infoAkademik">EVENT</a>
+                                    <a class="dropdown-item" href="#">KALENDER AKADEMIK</a>
+                                    <a class="dropdown-item" href="#">BEASISWA</a>
+                                    <a class="dropdown-item" href="#">PENERIMAAN MAHASISWA BARU</a>
+                                    <a class="dropdown-item" href="#">LAYANAN AKADEMIK</a>
+                                </div>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="/ushuludinToday" id="textNavBar2">USHULUDIN TODAY</a>
@@ -169,11 +201,11 @@
         </div>
         <div class="container">
             <div class="row">
-                <div class="col-2">
+                <div class="col-4">
                     <p><img src="<?= base_url('assets/images/news.png'); ?>" class="imgNews"> <strong>BREAKING
                             NEWS</strong></p>
                 </div>
-                <div class="col-10">
+                <div class="col-8">
                     <?php for($i=0;$i<1;$i++){ ?>
                     <marquee behavior="" direction=""><?= $JudulBerita[$i]; ?></marquee>
                     <?php } ?>

@@ -2,14 +2,14 @@
 
   $db      = \Config\Database::connect();
   $builder = $db->table('artikel');
-  $builder = $db->query("SELECT * FROM artikel WHERE Jenis = 'Kliping Koran' ORDER BY id DESC");
+  $builder1= $db->query("SELECT * FROM artikel WHERE Jenis ='Berita' ORDER BY id DESC");
   $a=0;
-  foreach($builder->getResultArray() as $row):
+  foreach($builder1->getResultArray() as $row):
     $id[$a] = $row['id'];
     $Judul[$a] = $row['Judul'];
     $Image[$a] = $row['Image'];
     $Abstrak[$a] = $row['Abstrak'];
-    $Abstrak2[$a]=substr($Abstrak[$a], 0, 200,);
+    $Abstrak2[$a]=substr($Abstrak[$a], 0, 100,);
     $Link[$a] = $row['Link'];
     $Penulis[$a] = $row['Penulis'];
     $Tanggal[$a] = $row['Tanggal'];
@@ -17,7 +17,7 @@
   endforeach;
   $totalData= $a;
 
-  $builder2= $db->query("SELECT * FROM artikel WHERE Jenis != 'Kliping Koran'  ORDER BY id DESC");
+  $builder2= $db->query("SELECT * FROM artikel WHERE Jenis !='Berita' ORDER BY id DESC");
   $b=0;
   foreach($builder2->getResultArray() as $row):
     $idAll[$b] = $row['id'];
@@ -36,10 +36,11 @@
 
 <?= $this->extend('layout/baseLayout') ?>
 <?= $this->section('title') ?>
-KARYA ILMIAH | KLIPING KORAN
+NEWS
 <?= $this->endSection() ?>
 <?= $this->section('content') ?>
 <?= $this->section('content') ?>
+<br>
 <div class="container">
     <div class="row">
         <div class="col-9">
@@ -108,7 +109,6 @@ KARYA ILMIAH | KLIPING KORAN
                 }
             }if($totalDataAll >= 2){
                 for($i=0;$i<1;$i++){ ?>
-
                 <a href="/detailNews/<?= $idAll[0]; ?>" class="ml-4">
                     <p class="deskImgSub"> <strong><?= $Judul2All[0]; ?></strong>
                     </p>
@@ -123,6 +123,7 @@ KARYA ILMIAH | KLIPING KORAN
                 <p class="deskImgSub"><?= $Abstrak2All[1]; ?>...</p>
                 <p class="deskImgSub"><?= $TanggalAll[1]; ?></p>
                 <hr />
+
                 <?php 
                 }
             }

@@ -1,45 +1,49 @@
-<?php 
+<?php
 
-  $db      = \Config\Database::connect();
-  $builder = $db->table('artikel');
-  $builder = $db->query("SELECT * FROM artikel WHERE Jenis = 'Kliping Koran' ORDER BY id DESC");
-  $a=0;
-  foreach($builder->getResultArray() as $row):
-    $id[$a] = $row['id'];
-    $Judul[$a] = $row['Judul'];
-    $Image[$a] = $row['Image'];
-    $Abstrak[$a] = $row['Abstrak'];
-    $Abstrak2[$a]=substr($Abstrak[$a], 0, 200,);
-    $Link[$a] = $row['Link'];
-    $Penulis[$a] = $row['Penulis'];
-    $Tanggal[$a] = $row['Tanggal'];
-    $a++;
-  endforeach;
-  $totalData= $a;
+$db      = \Config\Database::connect();
+$builder = $db->table('artikel');
+date_default_timezone_set('Asia/Jakarta');
+$waktu=date('Y-m-d'); 
+$builder = $db->query("SELECT * FROM artikel  ORDER BY id DESC");
+$a=0;
+foreach($builder->getResultArray() as $row):
+  $id[$a] = $row['id'];
+  $Judul[$a] = $row['Judul'];
+  $Image[$a] = $row['Image'];
+  $Abstrak[$a] = $row['Abstrak'];
+  $Abstrak2[$a]=substr($Abstrak[$a], 0, 200,);
+  $Link[$a] = $row['Link'];
+  $Penulis[$a] = $row['Penulis'];
+  $Tanggal[$a] = $row['Tanggal'];
+  $a++;
+endforeach;
+$totalData= $a;
 
-  $builder2= $db->query("SELECT * FROM artikel WHERE Jenis != 'Kliping Koran'  ORDER BY id DESC");
-  $b=0;
-  foreach($builder2->getResultArray() as $row):
-    $idAll[$b] = $row['id'];
-    $JudulAll[$b] = $row['Judul'];
-    $Judul2All[$b]=substr($JudulAll[$b], 0, 100,);
-    $ImageAll[$b] = $row['Image'];
-    $AbstrakAll[$b] = $row['Abstrak'];
-    $Abstrak2All[$b]=substr($AbstrakAll[$b], 0, 100,);
-    $LinkAll[$b] = $row['Link'];
-    $PenulisAll[$b] = $row['Penulis'];
-    $TanggalAll[$b] = $row['Tanggal'];
-    $b++;
-  endforeach;
-  $totalDataAll= $b;
- ?>
+$builder2= $db->query("SELECT * FROM artikel WHERE Jenis !='Inspirasi Pagi'  ORDER BY id DESC");
+$b=0;
+foreach($builder2->getResultArray() as $row):
+  $idAll[$b] = $row['id'];
+  $JudulAll[$b] = $row['Judul'];
+  $Judul2All[$b]=substr($JudulAll[$b], 0, 100,);
+  $ImageAll[$b] = $row['Image'];
+  $AbstrakAll[$b] = $row['Abstrak'];
+  $Abstrak2All[$b]=substr($AbstrakAll[$b], 0, 100,);
+  $LinkAll[$b] = $row['Link'];
+  $PenulisAll[$b] = $row['Penulis'];
+  $TanggalAll[$b] = $row['Tanggal'];
+  $b++;
+endforeach;
+$totalDataAll= $b;
+
+?>
 
 <?= $this->extend('layout/baseLayout') ?>
 <?= $this->section('title') ?>
-KARYA ILMIAH | KLIPING KORAN
+GLOSARIA
 <?= $this->endSection() ?>
 <?= $this->section('content') ?>
 <?= $this->section('content') ?>
+<br>
 <div class="container">
     <div class="row">
         <div class="col-9">
@@ -78,7 +82,6 @@ KARYA ILMIAH | KLIPING KORAN
                 $('#example').DataTable();
             });
             </script>
-
         </div>
         <div class="col-3">
             <div class="boxBeritaTerkait">
@@ -123,6 +126,7 @@ KARYA ILMIAH | KLIPING KORAN
                 <p class="deskImgSub"><?= $Abstrak2All[1]; ?>...</p>
                 <p class="deskImgSub"><?= $TanggalAll[1]; ?></p>
                 <hr />
+
                 <?php 
                 }
             }
@@ -130,6 +134,7 @@ KARYA ILMIAH | KLIPING KORAN
             }
             
             ?>
+
             </div>
         </div>
     </div>

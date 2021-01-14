@@ -2,41 +2,39 @@
 
   $db      = \Config\Database::connect();
   $builder = $db->table('artikel');
-  $builder = $db->query("SELECT * FROM artikel WHERE Jenis = 'Kliping Koran' ORDER BY id DESC");
+  $builder = $db->query("SELECT * FROM vidio WHERE Vidio = 'Kabar Alumni' ORDER BY id DESC");
   $a=0;
   foreach($builder->getResultArray() as $row):
     $id[$a] = $row['id'];
     $Judul[$a] = $row['Judul'];
-    $Image[$a] = $row['Image'];
-    $Abstrak[$a] = $row['Abstrak'];
+    $Image[$a] = $row['Thumbnail'];
+    $Abstrak[$a] = $row['Deskripsi'];
     $Abstrak2[$a]=substr($Abstrak[$a], 0, 200,);
-    $Link[$a] = $row['Link'];
-    $Penulis[$a] = $row['Penulis'];
-    $Tanggal[$a] = $row['Tanggal'];
+    $Tanggal[$a] = $row['Tanggal_input'];
     $a++;
   endforeach;
   $totalData= $a;
 
-  $builder2= $db->query("SELECT * FROM artikel WHERE Jenis != 'Kliping Koran'  ORDER BY id DESC");
-  $b=0;
-  foreach($builder2->getResultArray() as $row):
-    $idAll[$b] = $row['id'];
-    $JudulAll[$b] = $row['Judul'];
-    $Judul2All[$b]=substr($JudulAll[$b], 0, 100,);
-    $ImageAll[$b] = $row['Image'];
-    $AbstrakAll[$b] = $row['Abstrak'];
-    $Abstrak2All[$b]=substr($AbstrakAll[$b], 0, 100,);
-    $LinkAll[$b] = $row['Link'];
-    $PenulisAll[$b] = $row['Penulis'];
-    $TanggalAll[$b] = $row['Tanggal'];
-    $b++;
-  endforeach;
-  $totalDataAll= $b;
+  $builder2= $db->query("SELECT * FROM artikel  ORDER BY id DESC");
+$b=0;
+foreach($builder2->getResultArray() as $row):
+  $idAll[$b] = $row['id'];
+  $JudulAll[$b] = $row['Judul'];
+  $Judul2All[$b]=substr($JudulAll[$b], 0, 100,);
+  $ImageAll[$b] = $row['Image'];
+  $AbstrakAll[$b] = $row['Abstrak'];
+  $Abstrak2All[$b]=substr($AbstrakAll[$b], 0, 100,);
+  $LinkAll[$b] = $row['Link'];
+  $PenulisAll[$b] = $row['Penulis'];
+  $TanggalAll[$b] = $row['Tanggal'];
+  $b++;
+endforeach;
+$totalDataAll= $b;
  ?>
 
 <?= $this->extend('layout/baseLayout') ?>
 <?= $this->section('title') ?>
-KARYA ILMIAH | KLIPING KORAN
+KABAR ALUMNI
 <?= $this->endSection() ?>
 <?= $this->section('content') ?>
 <?= $this->section('content') ?>
@@ -78,6 +76,7 @@ KARYA ILMIAH | KLIPING KORAN
                 $('#example').DataTable();
             });
             </script>
+
 
         </div>
         <div class="col-3">
@@ -123,6 +122,7 @@ KARYA ILMIAH | KLIPING KORAN
                 <p class="deskImgSub"><?= $Abstrak2All[1]; ?>...</p>
                 <p class="deskImgSub"><?= $TanggalAll[1]; ?></p>
                 <hr />
+
                 <?php 
                 }
             }
@@ -130,6 +130,7 @@ KARYA ILMIAH | KLIPING KORAN
             }
             
             ?>
+
             </div>
         </div>
     </div>

@@ -1,23 +1,23 @@
 <?php 
 
   $db      = \Config\Database::connect();
-  $builder = $db->table('artikel');
-  $builder = $db->query("SELECT * FROM artikel WHERE Jenis = 'Kliping Koran' ORDER BY id DESC");
+  $builder = $db->table('event');
+  $builder = $db->query("SELECT * FROM event  ORDER BY id DESC");
   $a=0;
   foreach($builder->getResultArray() as $row):
     $id[$a] = $row['id'];
     $Judul[$a] = $row['Judul'];
     $Image[$a] = $row['Image'];
-    $Abstrak[$a] = $row['Abstrak'];
+    $Abstrak[$a] = $row['Deskripsi'];
     $Abstrak2[$a]=substr($Abstrak[$a], 0, 200,);
     $Link[$a] = $row['Link'];
-    $Penulis[$a] = $row['Penulis'];
-    $Tanggal[$a] = $row['Tanggal'];
+    $Penulis[$a] = $row['Komite'];
+    $Tanggal[$a] = $row['Tanggal_input'];
     $a++;
   endforeach;
   $totalData= $a;
 
-  $builder2= $db->query("SELECT * FROM artikel WHERE Jenis != 'Kliping Koran'  ORDER BY id DESC");
+  $builder2= $db->query("SELECT * FROM artikel WHERE Jenis != 'Artikel'  ORDER BY id DESC");
   $b=0;
   foreach($builder2->getResultArray() as $row):
     $idAll[$b] = $row['id'];
@@ -36,13 +36,14 @@
 
 <?= $this->extend('layout/baseLayout') ?>
 <?= $this->section('title') ?>
-KARYA ILMIAH | KLIPING KORAN
+EVENT
 <?= $this->endSection() ?>
 <?= $this->section('content') ?>
 <?= $this->section('content') ?>
 <div class="container">
     <div class="row">
         <div class="col-9">
+            <br>
             <table width="100%" class="table-borderless" id="example">
                 <thead>
                     <tr>
@@ -59,7 +60,7 @@ KARYA ILMIAH | KLIPING KORAN
                     ?>
                     <tr class="odd gradeX">
                         <td><img src="/assets/imgUpload/<?= $Image[$i]; ?>" id=imgKarya /></td>
-                        <td><a href="/detailNews/<?= $id[$i]; ?>" class="">
+                        <td><a href="/detailInfoAkademik/<?= $id[$i]; ?>" class="">
                                 <strong style="color: black; font-size:20px"><?= $Judul[$i]; ?></strong>
                             </a>
                             <p class=""><?= $Tanggal[$i]; ?></p>

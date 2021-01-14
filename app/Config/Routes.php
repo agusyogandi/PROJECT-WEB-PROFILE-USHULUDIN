@@ -31,6 +31,8 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Content::index');
+$routes->get('/profil', 'Content::profil');
+
 
 $routes->get('/karyaIlmiah', 'Content::karyaIlmiah');
 $routes->get('/karyaIlmiah/artikel', 'Content::artikel');
@@ -40,14 +42,24 @@ $routes->get('/karyaIlmiah/jurnal', 'Content::jurnal');
 $routes->get('/karyaIlmiah/kliping', 'Content::kliping');
 $routes->get('/detail_karyaIlmiah/(:num)', 'Content::detail_karyaIlmiah/$1');
 
-
-$routes->get('/profil', 'Content::profil');
-$routes->get('/news', 'Content::news');
-$routes->get('/infoAkademik', 'Content::infoAkademik');
-$routes->get('/ushuludinToday', 'Content::ushuludinToday');
-$routes->get('/glosaria', 'Content::glosaria');
-$routes->get('/vidio', 'Content::vidio');
 $routes->get('/foto', 'Content::foto');
+
+$routes->get('/vidioKA', 'Content::vidioKA');
+$routes->get('/vidioFK', 'Content::vidioFK');
+$routes->get('/detailVidio/(:segment)', 'Content::detailVidio/$1');
+
+$routes->get('/news', 'Content::news');
+$routes->get('/detailNews/(:segment)', 'Content::detailNews/$1');
+
+
+$routes->get('/ushuludinToday', 'Content::ushuludinToday');
+$routes->get('/detailUT/(:segment)', 'Content::DetailushuludinToday/$1');
+
+
+$routes->get('/infoAkademik', 'Content::infoAkademik');
+$routes->get('/detailInfoAkademik/(:segment)', 'Content::detailInfoAkademik/$1');
+
+$routes->get('/glosaria', 'Content::glosaria');
 $routes->get('/about', 'Content::about');
 $routes->get('/karir', 'Content::karir');
 $routes->get('/kontak', 'Content::kontak');
@@ -55,7 +67,8 @@ $routes->get('/kontak', 'Content::kontak');
 
 // index admin
 // $routes->group('', ['filter' => 'login'], function($routes){
-    $routes->get('/indexAdmin', 'Admin::index');
+	$routes->get('/indexAdmin', 'Admin::index');
+	$routes->get('/hapusPengunjung', 'admin::hapusPengunjung');
 // });
 
 
@@ -80,6 +93,11 @@ $routes->delete('/vidio/delete/(:num)', 'Vidio::delete/$1');
 $routes->delete('/vidio/edit/(:any)', 'Vidio::edit/$1');
 
 
+// event
+$routes->get('/eventFU', 'Event::index');
+$routes->post('/event/save', 'Event::save');
+$routes->delete('/event/delete/(:num)', 'Event::delete/$1');
+$routes->delete('/event/edit/(:any)', 'Event::edit/$1');
 
 
 

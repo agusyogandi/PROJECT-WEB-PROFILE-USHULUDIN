@@ -2,22 +2,20 @@
 
   $db      = \Config\Database::connect();
   $builder = $db->table('artikel');
-  $builder = $db->query("SELECT * FROM artikel WHERE Jenis = 'Kliping Koran' ORDER BY id DESC");
+  $builder = $db->query("SELECT * FROM vidio WHERE Vidio = 'Vidio Fakultas' ORDER BY id DESC");
   $a=0;
   foreach($builder->getResultArray() as $row):
     $id[$a] = $row['id'];
     $Judul[$a] = $row['Judul'];
-    $Image[$a] = $row['Image'];
-    $Abstrak[$a] = $row['Abstrak'];
+    $Image[$a] = $row['Thumbnail'];
+    $Abstrak[$a] = $row['Deskripsi'];
     $Abstrak2[$a]=substr($Abstrak[$a], 0, 200,);
-    $Link[$a] = $row['Link'];
-    $Penulis[$a] = $row['Penulis'];
-    $Tanggal[$a] = $row['Tanggal'];
+    $Tanggal[$a] = $row['Tanggal_input'];
     $a++;
   endforeach;
   $totalData= $a;
 
-  $builder2= $db->query("SELECT * FROM artikel WHERE Jenis != 'Kliping Koran'  ORDER BY id DESC");
+  $builder2= $db->query("SELECT * FROM artikel  ORDER BY id DESC");
   $b=0;
   foreach($builder2->getResultArray() as $row):
     $idAll[$b] = $row['id'];
@@ -36,7 +34,7 @@
 
 <?= $this->extend('layout/baseLayout') ?>
 <?= $this->section('title') ?>
-KARYA ILMIAH | KLIPING KORAN
+VIDIO KITA
 <?= $this->endSection() ?>
 <?= $this->section('content') ?>
 <?= $this->section('content') ?>
@@ -59,7 +57,7 @@ KARYA ILMIAH | KLIPING KORAN
                     ?>
                     <tr class="odd gradeX">
                         <td><img src="/assets/imgUpload/<?= $Image[$i]; ?>" id=imgKarya /></td>
-                        <td><a href="/detailNews/<?= $id[$i]; ?>" class="">
+                        <td><a href="/detailVidio/<?= $id[$i]; ?>" class="">
                                 <strong style="color: black; font-size:20px"><?= $Judul[$i]; ?></strong>
                             </a>
                             <p class=""><?= $Tanggal[$i]; ?></p>
@@ -123,6 +121,7 @@ KARYA ILMIAH | KLIPING KORAN
                 <p class="deskImgSub"><?= $Abstrak2All[1]; ?>...</p>
                 <p class="deskImgSub"><?= $TanggalAll[1]; ?></p>
                 <hr />
+
                 <?php 
                 }
             }
@@ -130,6 +129,7 @@ KARYA ILMIAH | KLIPING KORAN
             }
             
             ?>
+
             </div>
         </div>
     </div>

@@ -24,6 +24,10 @@
             <div id="mySidenav" class="sidenav">
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                 <a href="/indexAdmin">DASHBOARD</a>
+                <a href="/fotoFU">FOTO</a>
+                <a href="/vidioFU">VIDIO</a>
+                <a href="/eventFU">EVENT</a>
+                <a href="/artikel">LAINNYA</a>
                 <a href="/logout">LOGOUT</a>
             </div>
         </div>

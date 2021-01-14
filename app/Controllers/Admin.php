@@ -8,49 +8,55 @@ class admin extends BaseController
 	}
 	public function index()
 	{
-		
-		return view('admin/index');
-    }
-    // public function berita()
-	// {
-	// 	return view('admin/crud/berita');
-	// }
-	// public function artikel()
-	// {   $db      = \Config\Database::connect();
-    //     $builder = $db->table('artikel');
-    //     $totalData = $builder->countAll();
-	// 	$artikel = $this->artikelModel->findAll();
-	// 	$data = [
-	// 		'artikel' => $artikel,
-	// 		'totalData' => $totalData
-	// 	];
-	// 	return view('admin/crud/artikel', $data);
-	// }
-	// public function vidio()
-	// {
-	// 	return view('admin/crud/vidio');
-	// }
-	// public function foto()
-	// {
-	// 	return view('admin/crud/foto');
-	// }
-	// public function kabarAlumni()
-	// {
-	// 	return view('admin/crud/kabarAlumni');
-	// }
-	// public function inspirasiPagi()
-	// {
-	// 	return view('admin/crud/inspirasiPagi');
-	// }
-	// public function event()
-	// {
-	// 	return view('admin/crud/event');
-    // }
-    // public function statistik()
-	// {
-	// 	return view('admin/statistik');
-	// }
+		$date  = date("Y-m-d");
+        $waktu = time(); //
+        $timeinsert = date("Y-m-d H:i:s");
 
-	//--------------------------------------------------------------------
+        $db      = \Config\Database::connect();
+		$de = $db->query("SELECT * FROM visitor WHERE date='".$date."' GROUP BY ip");
+        $b=0;
+        foreach($de->getResultArray() as $row):
+          $ip[$b] = $row['ip'];
+          $b++;
+        endforeach;
+        $pengunjunghariini  = $b;
+        
+        $dww = $db->query("SELECT hits FROM visitor");
+        $c=0;
+        foreach($dww->getResultArray() as $row):
+          $hits[$c] = $row['hits'];
+          $c++;
+        endforeach;
+        $dbpengunjung = $c;
+
+		for($i=0;$i<$dbpengunjung;$i++){
+			$hitsPengunjung = $hits[$i];
+		}
+        $totalpengunjung = $hitsPengunjung;
+        $bataswaktu = time() - 300;
+        
+        $sr = $db->query("SELECT * FROM visitor WHERE online > '".$bataswaktu."'");
+        $d=0;
+        foreach($sr->getResultArray() as $row):
+          $ip[$d] = $row['ip'];
+          $d++;
+        endforeach;
+        $pengunjungonline  = $d;
+
+        
+        $data = array(
+           'pengunjunghariini'  =>$pengunjunghariini,
+            'totalpengunjung'   =>$totalpengunjung,
+           'pengunjungonline'   =>$pengunjungonline
+        );
+        return view('admin/index', $data);
+    }
+    public function hapusPengunjung()
+	{
+		$db      = \Config\Database::connect();
+		$de = $db->query("DELETE FROM visitor");
+
+		return view('/indexAdmin');
+	}
 
 }
